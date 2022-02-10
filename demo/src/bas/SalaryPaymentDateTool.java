@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
@@ -69,15 +71,17 @@ public class SalaryPaymentDateTool {
 			startMonth++;
 		}
 
+		String fileName = "salary_payment_" + inputYear + ".csv";
 		try {
-			File csvOutputFile = new File("salary_payment_" + inputYear + ".csv");
+			File csvOutputFile = new File(fileName);
 			PrintWriter pw = new PrintWriter(csvOutputFile);
 			finalResultList.stream().map(this::convertToCSV).forEach(pw::println);
 			pw.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		System.out.println("The process completed. Please check the file");
+		Path path = Paths.get(fileName);
+		System.out.println("The process completed. Please check the path " + path.toAbsolutePath());
 	}
 
 	/**
