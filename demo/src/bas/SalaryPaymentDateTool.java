@@ -81,7 +81,7 @@ public class SalaryPaymentDateTool {
 			e.printStackTrace();
 		}
 		Path path = Paths.get(fileName);
-		System.out.println("The process completed. Please check the path " + path.toAbsolutePath());
+		System.out.println("The process completed. File is created at " + path.toAbsolutePath());
 	}
 
 	/**
